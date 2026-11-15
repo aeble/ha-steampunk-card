@@ -18,7 +18,7 @@ All cards share the same keys. Anything missing is hidden or shown as "–".
 ```yaml
 type: custom:steampunk-card
 title: Home
-language: en                          # en or de; defaults to the Home Assistant language
+language: en                          # any language with a file in i18n/; defaults to the Home Assistant language
 outside_temperature: sensor.outdoor_temperature
 outside_humidity: sensor.outdoor_humidity
 weather: weather.forecast_home        # condition, and fallback for the outdoor temperature
@@ -56,7 +56,11 @@ The idle screen puts a black layer with a faint clock over the dashboard; a tap 
 
 People come from all `person.*` entities, low batteries from all sensors with `device_class: battery`.
 
-The cards speak English and German. Without `language` they follow the Home Assistant language; anything other than German shows English.
+The cards speak English and German. Without `language` they follow the Home Assistant language; languages without a translation fall back to English.
+
+## Translations
+
+All texts live in `i18n/<language>.json`, one file per language, keyed by short names such as `boiler` or `departs_in`. Placeholders in braces (`{mins}`, `{name}`) are filled in by the card and may move freely within the sentence. To add a language, copy `i18n/en.json` to e.g. `i18n/fr.json`, translate the values and open a pull request. Missing keys fall back to English.
 
 ## Installation
 
@@ -105,7 +109,7 @@ Alle Karten teilen sich dieselben Schlüssel. Was fehlt, wird ausgeblendet oder 
 ```yaml
 type: custom:steampunk-card
 title: Haus
-language: de                          # de oder en; Standard ist die Sprache von Home Assistant
+language: de                          # jede Sprache mit Datei in i18n/; Standard ist die Sprache von Home Assistant
 outside_temperature: sensor.aussen_temperatur
 outside_humidity: sensor.aussen_feuchte
 weather: weather.forecast_home        # Zustand und Ersatz für die Außentemperatur
@@ -140,6 +144,10 @@ contacts:                             # optional, Fenster und Türen
 ```
 
 Der Ruhemodus legt ein schwarzes Bild mit schwacher Uhr über das Dashboard; Antippen weckt es, ohne darunter etwas zu schalten. Die Helligkeit des Tablets selbst lässt sich aus dem Browser nicht steuern. Solange er aktiv ist, stehen alle Animationen still und die Karte zeichnet nur alle 30 Sekunden neu; das entlastet ältere Tablets.
+
+Die Karten sprechen Deutsch und Englisch. Ohne `language` folgen sie der Sprache von Home Assistant; Sprachen ohne Übersetzung erscheinen auf Englisch.
+
+Alle Texte stehen in `i18n/<sprache>.json`, eine Datei je Sprache, mit kurzen Schlüsseln wie `boiler` oder `departs_in`. Platzhalter in geschweiften Klammern (`{mins}`, `{name}`) füllt die Karte; sie dürfen im Satz beliebig stehen. Für eine neue Sprache `i18n/en.json` kopieren, etwa nach `i18n/fr.json`, die Werte übersetzen und einen Pull Request stellen. Fehlende Schlüssel fallen auf Englisch zurück.
 
 Personen kommen automatisch aus allen `person.*`-Entitäten, schwache Batterien aus allen Sensoren mit `device_class: battery`.
 
