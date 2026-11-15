@@ -2,6 +2,91 @@
 
 ![Screenshot](images/steampunk-card.png)
 
+Riveted brass plates on dark wood.
+
+- Nixie tubes as a clock.
+- One dial gauge per room, warning zone from 25 °C.
+- Boiler house with gauges for boiler and hot water, a fire hatch, gears that turn while the burner runs, and a mechanical counter for gas.
+- Toggle switches with light bulbs for the lights.
+- Gauges for power, outdoor temperature and network throughput.
+- Telegraph tape for departures, who is home, open windows and flat batteries.
+
+## Configuration
+
+All cards share the same keys. Anything missing is hidden or shown as "–".
+
+```yaml
+type: custom:steampunk-card
+title: Home
+outside_temperature: sensor.outdoor_temperature
+outside_humidity: sensor.outdoor_humidity
+weather: weather.forecast_home        # condition, and fallback for the outdoor temperature
+flame: binary_sensor.burner_flame     # heating, optional
+boiler: sensor.boiler_temperature
+hot_water: sensor.hot_water_temperature
+gas_today: sensor.gas_today
+gas_cost: sensor.gas_cost_today
+power: sensor.house_power             # W
+download: sensor.wan_download         # optional, converted to Mbit/s whatever the unit
+upload: sensor.wan_upload
+battery_threshold: 20                 # battery sensors below this are reported
+idle_timeout: 300                     # idle screen after this many seconds without touch (omit = off)
+idle_wake:                            # optional, keeps the dashboard awake while active
+  - binary_sensor.kitchen_presence
+rooms:
+  - name: Living room
+    temperature: sensor.living_room_temperature
+    humidity: sensor.living_room_humidity
+    co2: sensor.living_room_co2           # optional, ppm; yellow from 1000, red from 1200
+    pm25: sensor.living_room_pm25         # optional, µg/m³; yellow from 15, red from 35
+lights:
+  - name: Kitchen
+    entity: light.kitchen
+departure:                            # optional, sensor holding the timestamp of the next departure
+  name: Bus 12 › Centre
+  entity: sensor.next_departure
+  delay: sensor.delay
+contacts:                             # optional, windows and doors
+  - name: Bathroom window
+    entity: binary_sensor.bathroom_window
+```
+
+The idle screen puts a black layer with a faint clock over the dashboard; a tap wakes it without switching anything underneath. A browser cannot dim the tablet's backlight itself. While idle, all animations pause and the card redraws only every 30 seconds, which helps older tablets.
+
+People come from all `person.*` entities, low batteries from all sensors with `device_class: battery`.
+
+The text shown on the cards is German.
+
+## Installation
+
+Via HACS as a custom repository (type Dashboard), or by hand: copy `steampunk-card.js` to `/config/www/` and add `/local/steampunk-card.js` as a JavaScript module under Settings → Dashboards → Resources.
+
+A discreet signature sits in the bottom right corner; `signature: false` hides it.
+
+The card is meant for a panel view (`panel: true`) so it fills the screen.
+
+```yaml
+views:
+  - title: Home
+    panel: true
+    cards:
+      - type: custom:steampunk-card
+        # configuration as above
+```
+
+The fonts are embedded in the card file; the card loads nothing from external servers.
+
+## License
+
+Apache License 2.0, copyright 2026 Axel Eble. If you redistribute or modify the card, include `LICENSE` and `NOTICE`.
+
+
+---
+
+## Deutsch
+
+### Steampunk
+
 Messingtafeln mit Nieten auf dunklem Holz.
 
 - Nixie-Röhren als Uhr.
@@ -11,7 +96,7 @@ Messingtafeln mit Nieten auf dunklem Holz.
 - Instrumente für Leistung, Außentemperatur und Netzdurchsatz.
 - Telegraphenstreifen für Abfahrten, Anwesende, offene Fenster und erschöpfte Batterien.
 
-## Konfiguration
+#### Konfiguration
 
 Alle Karten teilen sich dieselben Schlüssel. Was fehlt, wird ausgeblendet oder als „–“ angezeigt.
 
@@ -55,7 +140,7 @@ Der Ruhemodus legt ein schwarzes Bild mit schwacher Uhr über das Dashboard; Ant
 
 Personen kommen automatisch aus allen `person.*`-Entitäten, schwache Batterien aus allen Sensoren mit `device_class: battery`.
 
-## Einbau
+#### Einbau
 
 Über HACS als benutzerdefiniertes Repository (Typ Dashboard) oder von Hand: `steampunk-card.js` nach `/config/www/` kopieren und unter Einstellungen → Dashboards → Ressourcen als JavaScript-Modul `/local/steampunk-card.js` eintragen.
 
@@ -72,8 +157,8 @@ views:
         # Konfiguration wie oben
 ```
 
-Schriften kommen von Google Fonts. Ohne Internetzugang fällt die Karte auf Systemschriften zurück.
+Die Schriften stecken in der Kartendatei; die Karte lädt nichts von fremden Servern.
 
-## Lizenz
+#### Lizenz
 
 Apache License 2.0, Copyright 2026 Axel Eble. Wer die Karte weitergibt oder verändert, liefert `LICENSE` und `NOTICE` mit.
