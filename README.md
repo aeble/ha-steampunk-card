@@ -50,7 +50,12 @@ departure:                            # optional, sensor holding the timestamp o
 contacts:                             # optional, windows and doors
   - name: Bathroom window
     entity: binary_sensor.bathroom_window
+todo: todo.shopping_list              # optional, a to-do list such as Bring! or the built-in shopping list
 ```
+
+A short tap on a light toggles it; press and hold opens the Home Assistant light dialog with brightness and colour.
+
+With `todo` the card shows the open items of that list, each in its own style. Tapping it opens the list in Home Assistant for editing.
 
 The idle screen puts a black layer with a faint clock over the dashboard; a tap wakes it without switching anything underneath. A browser cannot dim the tablet's backlight itself. While idle, all animations pause and the card redraws only every 30 seconds, which helps older tablets.
 
@@ -141,7 +146,12 @@ departure:                            # optional, Sensor mit Zeitstempel der nä
 contacts:                             # optional, Fenster und Türen
   - name: Fenster Bad
     entity: binary_sensor.fenster_bad
+todo: todo.einkaufsliste              # optional, To-do-Liste, etwa Bring! oder die eingebaute Einkaufsliste
 ```
+
+Kurzes Tippen auf eine Lampe schaltet sie um, langes Drücken öffnet den Lichtdialog von Home Assistant mit Helligkeit und Farbe.
+
+Mit `todo` zeigt die Karte die offenen Einträge der Liste, jede in ihrem Stil. Antippen öffnet die Liste in Home Assistant zum Bearbeiten.
 
 Der Ruhemodus legt ein schwarzes Bild mit schwacher Uhr über das Dashboard; Antippen weckt es, ohne darunter etwas zu schalten. Die Helligkeit des Tablets selbst lässt sich aus dem Browser nicht steuern. Solange er aktiv ist, stehen alle Animationen still und die Karte zeichnet nur alle 30 Sekunden neu; das entlastet ältere Tablets.
 

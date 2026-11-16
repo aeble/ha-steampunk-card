@@ -27,7 +27,7 @@
   "battery": "BATTERY",
   "rooms": "Rooms",
   "lights": "Lights",
-  "click_a_window_to_switch_its_light": "Click a window to switch its light.",
+  "click_a_window_to_switch_its_light": "Click a window to switch its light. Press and hold for brightness and colour.",
   "the_house": "The House",
   "oil_on_canvas": "oil on canvas",
   "the_burner_is_running_smoke_rises_from_t": "The burner is running; smoke rises from the chimney.",
@@ -122,5 +122,10 @@
   "weather_snowy_rainy": "sleet",
   "weather_sunny": "sunny",
   "weather_windy": "windy",
-  "weather_windy_variant": "windy and cloudy"
+  "weather_windy_variant": "windy and cloudy",
+  "shopping_empty": "Nothing to get.",
+  "shopping_tap": "Tap to edit",
+  "cargo_manifest": "Cargo manifest",
+  "provisions": "Provisions",
+  "shopping_note": "Shopping list"
 }

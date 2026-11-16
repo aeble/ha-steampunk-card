@@ -27,7 +27,7 @@
   "battery": "BATTERIE",
   "rooms": "Verzeichnis der Räume",
   "lights": "Lichter",
-  "click_a_window_to_switch_its_light": "Ein Klick auf ein Fenster schaltet sein Licht.",
+  "click_a_window_to_switch_its_light": "Ein Klick auf ein Fenster schaltet sein Licht. Lange drücken: Helligkeit und Farbe.",
   "the_house": "Das Haus",
   "oil_on_canvas": "Öl auf Leinwand",
   "the_burner_is_running_smoke_rises_from_t": "Der Brenner läuft, aus dem Kamin steigt Rauch.",
@@ -122,5 +122,10 @@
   "weather_snowy_rainy": "Schneeregen",
   "weather_sunny": "sonnig",
   "weather_windy": "windig",
-  "weather_windy_variant": "windig und wolkig"
+  "weather_windy_variant": "windig und wolkig",
+  "shopping_empty": "Nichts zu besorgen.",
+  "shopping_tap": "Antippen zum Bearbeiten",
+  "cargo_manifest": "Frachtmanifest",
+  "provisions": "Proviantliste",
+  "shopping_note": "Einkaufszettel"
 }
