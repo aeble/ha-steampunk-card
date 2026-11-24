@@ -69,7 +69,9 @@ All texts live in `i18n/<language>.json`, one file per language, keyed by short 
 
 ## Installation
 
-Via HACS as a custom repository (type Dashboard), or by hand: copy `steampunk-card.js` to `/config/www/` and add `/local/steampunk-card.js` as a JavaScript module under Settings → Dashboards → Resources.
+Open HACS, search for `steampunk-card` and download it. HACS adds the dashboard resource itself; reload the browser afterwards.
+
+By hand: copy `steampunk-card.js` to `/config/www/` and add `/local/steampunk-card.js` as a JavaScript module under Settings → Dashboards → Resources.
 
 A discreet signature sits in the bottom right corner; `signature: false` hides it.
 
@@ -163,7 +165,9 @@ Personen kommen automatisch aus allen `person.*`-Entitäten, schwache Batterien 
 
 #### Einbau
 
-Über HACS als benutzerdefiniertes Repository (Typ Dashboard) oder von Hand: `steampunk-card.js` nach `/config/www/` kopieren und unter Einstellungen → Dashboards → Ressourcen als JavaScript-Modul `/local/steampunk-card.js` eintragen.
+HACS öffnen, nach `steampunk-card` suchen und herunterladen. HACS trägt die Dashboard-Ressource selbst ein; danach den Browser neu laden.
+
+Von Hand: `steampunk-card.js` nach `/config/www/` kopieren und unter Einstellungen → Dashboards → Ressourcen als JavaScript-Modul `/local/steampunk-card.js` eintragen.
 
 Unten rechts steht eine dezente Signatur; `signature: false` blendet sie aus.
 

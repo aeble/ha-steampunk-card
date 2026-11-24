@@ -26,7 +26,7 @@ const tx = (key, vars = {}) => {
 
 
 
-const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 const num = (hass, id) => {
   const s = id && hass.states[id];
@@ -524,10 +524,10 @@ class SteampunkCard extends TemplateCard {
     const msgs = [];
     if (m.departure) {
       const mins = m.departure.minutes;
-      msgs.push(`${m.departure.name}: ${Number.isFinite(mins) && mins >= 0 ? tx('departs_in', { mins }) : tx('no_word')}${m.departure.delay > 0 ? ` <b>(${tx('minutes_late', { mins: fmt(m.departure.delay, 0) })})</b>` : ''}`);
+      msgs.push(`${esc(m.departure.name)}: ${Number.isFinite(mins) && mins >= 0 ? tx('departs_in', { mins }) : tx('no_word')}${m.departure.delay > 0 ? ` <b>(${tx('minutes_late', { mins: fmt(m.departure.delay, 0) })})</b>` : ''}`);
     }
     const home = m.persons.filter((p) => p.home).map((p) => p.name);
-    if (m.persons.length) msgs.push(home.length ? tx('present', { names: home.join(', ') }) : tx('the_house_stands_empty'));
+    if (m.persons.length) msgs.push(home.length ? tx('present', { names: home.map(esc).join(', ') }) : tx('the_house_stands_empty'));
     for (const c of m.contacts) if (c.open) msgs.push(`<b>${tx('stands_open', { name: esc(c.name) })}</b>`);
     for (const b of m.lowBattery.slice(0, 5)) msgs.push(`<b>${tx('battery_exhausted', { name: esc(b.name), level: fmt(b.level, 0) })}</b>`);
     return {
